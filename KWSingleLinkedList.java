@@ -198,7 +198,7 @@ public class KWSingleLinkedList<E> {
 /******************   Implement The Following Methods  ***********************/
 /*****************************************************************************/
 
-    /**
+    /** TODO needs fixin
      * Remove the item at the specified position in the list. Shifts
      * any subsequent items to the left (subtracts one from their
      * index). Returns the item that was removed.
@@ -207,8 +207,16 @@ public class KWSingleLinkedList<E> {
      * @throws IndexOutOfBoundsException if the index is out of range
      */
     public E remove(int index) {
-        // TODO: Implement this method
-        return null;
+        if(index >= size || index < 0) throw new IndexOutOfBoundsException();
+        Node<E> ptr = head;
+        if(index != 0){
+            for(int i = 0; i < index; i++){
+                ptr = ptr.next;
+            }
+        }
+        ptr.next = ptr.next.next;
+        size--;
+        return ptr.data;
     }    
 
     /**
@@ -217,7 +225,16 @@ public class KWSingleLinkedList<E> {
      * @return true if item is found and removed; otherwise, return false.
      */
     public boolean remove(E item) {
-        // TODO: Implement this method
+        Node<E> ptr = head;
+        int i = 0;
+        while(ptr != null){
+            if(ptr.data.equals(item)){
+                remove(i);
+                return true;
+            }
+            i++;
+            ptr = ptr.next;
+        }
         return false;
     }
  
@@ -240,30 +257,44 @@ public class KWSingleLinkedList<E> {
 
     //add java documentation as found in the List<E> Interface
     public void clear() {
-        // TODO: Implement this method
+        head = null;
     }
  
     //add java documentation as found in the List<E> Interface
     public boolean contains(E item) {
-        // TODO: Implement this method
+        Node<E> ptr = head;
+        while(ptr != null){
+            if(ptr.data.equals(item)){
+                return true;
+            }
+            ptr = ptr.next;
+        }
         return false;
     }
  
     //add java documentation as found in the List<E> Interface
     public int indexOf(E item) {
-        // TODO: Implement this method
-        return 0;
+        int i = 0;
+        Node<E> ptr = head;
+        while(ptr != null){
+            if(ptr.data.equals(item)) break;
+            else i++;
+            ptr = ptr.next;
+        }
+        if(i >= size) return -1;
+        return i;
     }
 
     //add java documentation as found in the List<E> Interface
     public boolean isEmpty() {
-        // TODO: Implement this method
-        return false;
+        return (size == 0);
     }
 
     //add java documentation as found in the List<E> Interface
     public int lastIndexOf(E item) {
-        // TODO: Implement this method
+        for(int i = 0; i < size; i++){
+            // TODO GAME END
+        }
         return 0;
     }
 } // class KWSingleLinkedList
