@@ -292,9 +292,14 @@ public class KWSingleLinkedList<E> {
 
     //add java documentation as found in the List<E> Interface
     public int lastIndexOf(E item) {
-        for(int i = 0; i < size; i++){
-            // TODO GAME END
+        int highest = -1;
+        int iteration = 0;
+        Node<E> ptr = head;
+        while(ptr != null){
+            if(ptr.data.equals(item)) highest = iteration;
+            iteration++;
+            ptr = ptr.next;
         }
-        return 0;
+        return highest;
     }
 } // class KWSingleLinkedList
