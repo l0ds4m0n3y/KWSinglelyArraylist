@@ -3,10 +3,11 @@ public class Main {
     KWSingleLinkedList<String> myList = new KWSingleLinkedList<>();
     myList.add("hello");    
     myList.add("hi");
-    myList.add("hi");
-    myList.add("hello");
-    myList.add("hi");
+    myList.add("poopy");
 
-    System.out.println(myList.lastIndexOf("hi"));
+    myList.remove(2);
+    for(int i = 0; i < myList.size(); i++){
+        System.out.println(myList.get(i));
+    }
     }
 }

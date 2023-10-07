@@ -198,7 +198,7 @@ public class KWSingleLinkedList<E> {
 /******************   Implement The Following Methods  ***********************/
 /*****************************************************************************/
 
-    /** TODO needs fixin
+    /**
      * Remove the item at the specified position in the list. Shifts
      * any subsequent items to the left (subtracts one from their
      * index). Returns the item that was removed.
@@ -209,12 +209,15 @@ public class KWSingleLinkedList<E> {
     public E remove(int index) {
         if(index >= size || index < 0) throw new IndexOutOfBoundsException();
         Node<E> ptr = head;
-        if(index != 0){
-            for(int i = 0; i < index; i++){
+        if(index == 0){
+            head = head.next;
+        }
+        else{
+            for(int i =0; i < index - 1; i++){
                 ptr = ptr.next;
             }
+            ptr.next = ptr.next.next;
         }
-        ptr.next = ptr.next.next;
         size--;
         return ptr.data;
     }    
@@ -226,13 +229,11 @@ public class KWSingleLinkedList<E> {
      */
     public boolean remove(E item) {
         Node<E> ptr = head;
-        int i = 0;
         while(ptr != null){
-            if(ptr.data.equals(item)){
-                remove(i);
+            if(ptr.next.data.equals(item)){
+                ptr = ptr.next;
                 return true;
             }
-            i++;
             ptr = ptr.next;
         }
         return false;
