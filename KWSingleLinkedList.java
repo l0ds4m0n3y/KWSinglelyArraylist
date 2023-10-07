@@ -229,12 +229,14 @@ public class KWSingleLinkedList<E> {
      */
     public boolean remove(E item) {
         Node<E> ptr = head;
+        int i = 0;
         while(ptr != null){
-            if(ptr.next.data.equals(item)){
-                ptr = ptr.next;
+            if(ptr.data.equals(item)){
+                remove(i);
                 return true;
             }
             ptr = ptr.next;
+            i++;
         }
         return false;
     }
@@ -253,7 +255,22 @@ public class KWSingleLinkedList<E> {
      * @throws IndexOutOfBoundsException if the index is out of range
      */
     public void add2(int index, E item) {
-        // TODO: Implement this method
+        if(index < 0 || index >= size + 1) throw new IndexOutOfBoundsException();
+        Node<E> ptr = new Node<E>(item);
+        if(index == 0){
+            ptr.next = head;
+            head = ptr;
+
+        } else{
+            Node<E> temp = head;
+            for(int i = 0; i < index - 1; i++){
+                temp = temp.next;
+            }
+            ptr.next = temp.next;
+            temp.next = ptr;
+            System.out.println("!!!!" + temp.data);
+        }
+        size++;
     }
 
     //add java documentation as found in the List<E> Interface
