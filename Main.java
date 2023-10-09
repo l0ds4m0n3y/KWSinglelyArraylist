@@ -1,12 +1,14 @@
 public class Main {
     public static void main(String[] args) {        
         KWSingleLinkedList<String> myList = new KWSingleLinkedList<>();
-        myList.add("hello");    // 0
-        myList.add("hi");   //1
-        myList.add("poopy"); //2
+        myList.add("zero");
+        myList.add("one");
+        myList.add("two");
+        myList.add("three");
+        myList.add("four");
 
 
-        myList.add2(3, "cagaste");
+        myList.remove(3);
         for(int i = 0; i < myList.size(); i++){
             System.out.println(myList.get(i));
         }
